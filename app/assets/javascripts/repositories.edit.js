@@ -27,21 +27,22 @@ $(document).ready(function () {
         trueSize: [this.naturalWidth, this.naturalHeight],
         onSelect: function (selection) {
           if (!userValue){
-            setValue('x', selection.x);
-            setValue('y', selection.y);
-            setValue('w', selection.w);
-            setValue('h', selection.h);
+            setValue('mask_x', selection.x);
+            setValue('mask_y', selection.y);
+            setValue('mask_width', selection.w);
+            setValue('mask_height', selection.h);
           }
           userValue = false;
         },
         onRelease: function(){
-          $("#repository_x").val(null);
-          $("#repository_y").val(null);
-          $("#repository_w").val(null);
-          $("#repository_h").val(null);
+          $("#repository_mask_x").val(null);
+          $("#repository_mask_y").val(null);
+          $("#repository_mask_width").val(null);
+          $("#repository_mask_height").val(null);
         }
       }, function(){
         jcrop_api = this;
+        setSelectionFromValues();
       });
     });
     //Iniciar o carregamento da imagem manualmente
@@ -49,43 +50,51 @@ $(document).ready(function () {
     jcropInit = true;
   }
 
-  //Quando o usuário seta os valores, muda a seleção na imagem
-  $('#repository_w,#repository_h').change(function(){
-    $(['x','y','w','h']).each(function(){
-      if($('#repository_'+this).val().length == 0)
-        $('#repository_'+this).val(0);
-    });
-    var x = parseInt($('#repository_x').val()),
-        y = parseInt($('#repository_y').val()),
-        w = parseInt($('#repository_w').val()),
-        h = parseInt($('#repository_h').val()),
+  var setSelectionFromValues = function(el){
+    if (el){
+      $(['mask_x','mask_y','mask_width','mask_height']).each(function(){
+        if($('#repository_'+this).val().length == 0)
+          $('#repository_'+this).val(0);
+      });
+      userValue = true;
+    }
+    var x = parseInt($('#repository_mask_x').val()),
+        y = parseInt($('#repository_mask_y').val()),
+        w = parseInt($('#repository_mask_width').val()),
+        h = parseInt($('#repository_mask_height').val()),
         aspect = jcrop_api.getOptions().aspectRatio;
     if(aspect != 0){
-      if($(this).is('#repository_w')){
+      if(el && $(el).is('#repository_mask_width')){
         h = w / aspect;
       }else{
         w = h * aspect;
       }
     }
-    userValue = true;
-    jcrop_api.setSelect([x, y, x+w, y+h]);
-    var o = jcrop_api.tellSelect();
-    //Se o usuário seta um valor que corta pra fora da imagem,
-    //muda o valor do campo para o valor real
-    if(Math.abs(w - o.w) > 1){
-      w = null;
-      if(aspect != 0){
+    if (w > 0 && h > 0){
+      jcrop_api.setSelect([x, y, x+w, y+h]);
+      var o = jcrop_api.tellSelect();
+      //Se o usuário seta um valor que corta pra fora da imagem,
+      //muda o valor do campo para o valor real
+      if(Math.abs(w - o.w) > 1){
+        w = null;
+        if(aspect != 0){
+          h = null;
+        }
+      }
+      if(Math.abs(h - o.h) > 1){
         h = null;
+        if(aspect != 0){
+          w= null;
+        }
       }
+      setValue('mask_width', o.w, w);
+      setValue('mask_height', o.h, h);
     }
-    if(Math.abs(h - o.h) > 1){
-      h = null;
-      if(aspect != 0){
-        w= null;
-      }
-    }
-    setValue('w', o.w, w);
-    setValue('h', o.h, h);
+  }
+
+  //Quando o usuário seta os valores, muda a seleção na imagem
+  $('#repository_mask_width, #repository_mask_height').change(function(){
+    setSelectionFromValues(this);
   });
 
   $('.toggle-lock input').change(function(){
@@ -101,7 +110,7 @@ $(document).ready(function () {
   });
 
   //Simular o efeito de onchange quando pressiona [enter] e impedir que o formulário seja enviado
-  $('#repository_w,#repository_h').keydown(function(e){
+  $('#repository_mask_width, #repository_mask_height').keydown(function(e){
     if(e.keyCode == 13){
       $(this).change();
       return false;
@@ -128,6 +137,7 @@ $(document).ready(function () {
     }
   });
 
+  // Abrir o painel de ediçao
   $('.panel-heading').click(function(){
     var $body = $('.img-edit .panel-body');
     $body.slideDown(300, function(){
@@ -137,7 +147,7 @@ $(document).ready(function () {
     });
     $body.prev('.panel-heading').removeClass('closed').addClass('open');
   });
-
+  // Fechar o painel de edição
   $('.img-edit-cancel').click(function(){
     var $body = $('.img-edit .panel-body');
     $body.slideUp(300);

@@ -13,7 +13,7 @@ module Paperclip
     def crop_command
       target = @attachment.instance
       if target.will_crop?
-        "-crop #{target.w.to_i}x#{target.h.to_i}+#{target.x.to_i}+#{target.y.to_i} +repage "
+        "-crop #{target.crop_w.to_i}x#{target.crop_h.to_i}+#{target.crop_x.to_i}+#{target.crop_y.to_i} +repage "
       end
     end
   end

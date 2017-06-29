@@ -45,6 +45,9 @@ pt-BR:
           lock_aspect_ratio:   " Fixar a proporção do corte da imagem "
           height:              " Altura "
           width:               " Largura "
+          crop:                " Cortar imagem "
+          mask:                " Posicionar "
+          method:              " Aplicar "
         repo:
           picture:             " Imagem "
         list:

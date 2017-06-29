@@ -1,7 +1,7 @@
 class Repository < ActiveRecord::Base
   include Trashable
 
-  attr_accessor :x, :y, :w, :h
+  attr_accessor :edit_action, :crop_x, :crop_y, :crop_w, :crop_h
 
   STYLES = {
     i: "95x70",
@@ -67,8 +67,21 @@ class Repository < ActiveRecord::Base
 
   before_post_process :image?, :normalize_file_name
 
+  before_update do
+    if edit_action != 'mask'
+      self.crop_x = mask_x
+      self.mask_x = nil
+      self.crop_y = mask_y
+      self.mask_y = nil
+      self.crop_w = mask_width
+      self.mask_width = nil
+      self.crop_h = mask_height
+      self.mask_height = nil
+    end
+  end
+
   def will_crop?
-    !x.blank? && !y.blank? && w.to_i > 0 && h.to_i > 0
+    edit_action.to_s == 'crop' && crop_x.present? && crop_y.present? && crop_w.to_i > 0 && crop_h.to_i > 0
   end
 
 # Metodo para incluir a url do arquivo no json

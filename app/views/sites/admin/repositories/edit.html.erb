@@ -24,14 +24,14 @@
       </div>
       <div class="panel-body" style="display: none">
         <img id="img-crop" data-src="<%= @repository.archive_url %>" src="" alt="<%= @repository.description %>"/>
-        <%= hidden_field_tag 'repository[x]' %>
-        <%= hidden_field_tag 'repository[y]' %>
+        <%= f.input_field :mask_x, as: :hidden %>
+        <%= f.input_field :mask_y, as: :hidden %>
         <div class="form-group">
           <div class="col-md-1 control-label">
             <label><%= t('.width') %></label>
           </div>
           <div class="col-md-2">
-            <%= number_field_tag 'repository[w]', '', class: 'form-control', min: 0 %>
+            <%= f.input_field :mask_width, min: 0 %>
           </div>
           <div class="col-md-8">
             <div class="toggle-lock label label-default" title="<%= t('.lock_aspect_ratio') %>">
@@ -45,15 +45,26 @@
             <label><%= t('.height') %></label>
           </div>
           <div class="col-md-2">
-            <%= number_field_tag 'repository[h]', '', class: 'form-control', min: 0 %>
+            <%= f.input_field :mask_height, min: 0 %>
           </div>
           <div class="col-md-8"></div>
           <div class="clearfix"></div>
         </div>
         <div class="form-group">
-          <div class="col-md-3 col-md-offset-1">
-            <%= link_to t('cancel'), '#', class: 'btn btn-default btn-sm img-show-cancel' %>
+          <div class="col-md-1 control-label">
+            <label><%= t('.method') %></label>
           </div>
+          <div class="col-md-11">
+            <div class="btn-group" data-toggle="buttons">
+              <label class="btn btn-info active">
+                <%= radio_button_tag 'repository[edit_action]', 'mask', true %> <%= t('.mask') %>
+              </label>
+              <label class="btn btn-info">
+                <%= radio_button_tag 'repository[edit_action]', 'crop', false %> <%= t('.crop') %>
+              </label>
+            </div>
+          </div>
+          <%= link_to t('cancel'), '#', class: 'btn btn-sm btn-default pull-right img-edit-cancel' %>
         </div>
       </div>
     </div>

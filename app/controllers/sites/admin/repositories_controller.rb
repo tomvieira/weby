@@ -156,6 +156,6 @@ class Sites::Admin::RepositoriesController < ApplicationController
   end
 
   def repository_params
-    params.require(:repository).permit(:description, :site_id, :archive, :x, :y, :w, :h, :title, :legend)
+    params.require(:repository).permit(:description, :site_id, :archive, :mask_x, :mask_y, :mask_width, :mask_height, :edit_action, :title, :legend)
   end
 end

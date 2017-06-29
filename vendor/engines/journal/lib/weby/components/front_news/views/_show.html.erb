@@ -19,8 +19,13 @@
           </div>
         <% end %>
         <article>
-          <% unless news.image.nil? %>
-            <%= weby_file_view(news.image, component.image_size, component.avatar_width, component.avatar_height, {as: "link", url: news.url.present? ? news.url : news_url(news, subdomain: news.site), target: (component.new_tab && news.url.present? ? '_blank' : '_self'), link_class: 'news-image'}) %>
+          <% if news.image.present? %>
+            <% has_mask = news.image.mask_x.present? && news.image.mask_width.to_i > 0 %>
+            <% if has_mask %>
+            <% end %>
+              <%= weby_file_view(news.image, component.image_size, component.avatar_width, component.avatar_height, {as: "link", url: news.url.present? ? news.url : news_url(news, subdomain: news.site), target: (component.new_tab && news.url.present? ? '_blank' : '_self'), link_class: 'news-image'}) %>
+            <% if has_mask %>
+            <% end %>
           <% end %>
           <header>
             <h2> <%= link_to news.title, news.url.present? ? news.url : news_url(news, subdomain: news.site), target: (component.new_tab && news.url.present? ? '_blank' : '_self') %> </h2>

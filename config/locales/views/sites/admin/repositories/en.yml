@@ -39,6 +39,9 @@ en:
           lock_aspect_ratio:   " Lock the aspect ratio "
           height:              " Height "
           width:               " Width "
+          crop:                " Crop image "
+          mask:                " Positioning mask "
+          method:              " Method "
         repo:
           picture:             " Picture "
         list:
