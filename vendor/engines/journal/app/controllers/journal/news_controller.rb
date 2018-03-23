@@ -8,7 +8,7 @@ module Journal
     respond_to :html, :js, :json, :rss
 
     def index
-      @newslist = get_news
+      # @newslist = get_news
 
       respond_with(@newslist) do |format|
         format.rss { render layout: false, content_type: Mime::XML } # index.rss.builder
