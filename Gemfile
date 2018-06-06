@@ -5,7 +5,8 @@ source 'http://rubygems.org'
 gem 'rails', '~> 4.2.10'
 gem 'rake', '11.2.2'
 
-gem 'thin', '~> 1.6.3'
+#gem 'thin', '~> 1.6.3'
+gem 'unicorn', '~> 5.4.0'
 gem 'pg', '~> 0.17.1'
 
 # js and css frameworks
