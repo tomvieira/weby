@@ -1,0 +1,9 @@
+en:
+  themes:
+    level4:
+      title:              " Unidades "
+      placeholders:
+        first_place:        " Top "
+        home:               " Home Page "
+        top:                " Header "
+        bottom:             " Bottom "
