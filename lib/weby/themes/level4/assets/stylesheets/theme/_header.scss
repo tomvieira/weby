@@ -5,8 +5,7 @@ body > header {
 }
 
 body .header {
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0;
 }
 
 .header {
@@ -14,9 +13,56 @@ body .header {
   position: relative;
   padding: 16px 0;
   padding-bottom: calc(16px + 30px);
+  background: #fff; 
 
   .ufg-logo {
-    margin-right: 10px;
+    margin-right: 0; 
+    
+    a{
+      display: flex;
+      justify-content: center;
+      height: 100%;
+
+      img{
+        width: 85%;
+        height: auto;
+      }
+
+    }    
+    
+  }
+
+  .sub-logo{
+    width: 150px;
+    height: 70px;
+    background: gray;
+    margin-right: 10px;   
+  }
+
+  .signatures{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 34%, rgba(0,114,185,1) 35%, rgba(0,114,185,1) 100%);
+
+    .container{
+
+      .signatures-area{
+        background-color: #fff;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+      }
+      
+      nav{      
+        height: 100%;      
+        background-image: asset-url('level4/colmeia_topo.png');
+        background-position: left;
+        background-repeat: no-repeat;
+      }
+
+    }
   }
 
   .container {
@@ -25,19 +71,21 @@ body .header {
     justify-content: space-between;
   }
 
+  .top-bar{
+    width: 100%;
+    background: #ebebeb;
+  }
+
+  .search-area .menu-logo{
+    display: none;
+  }
+
   .menu-bar {
     height: auto;
-    min-height: 60px;
-    border-radius: 2px;
-    background-color: var(--blue);
-    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    max-width: 940px;
-    top: 102px;
-    z-index: 5;
+    min-height: 60px;    
+    background-color: var(--blue);    
+    position: relative;    
+    width: 100%;      
 
     .container {
       position: relative;
@@ -102,6 +150,7 @@ body .header {
       flex-wrap: wrap;
       margin: 0;
       justify-content: center;
+      height: 100%;
 
       > li {
         padding: 0;
@@ -135,7 +184,7 @@ body .header {
             content: '';
             width: 24px;
             height: 24px;
-            background-image: asset-url('ufg2/expand-more-white.png');
+            background-image: asset-url('level4/expand-more-white.png');
             position: absolute;
             right: -0.5px;
             top: 18px;
@@ -214,7 +263,7 @@ body .header {
               content: '';
               width: 24px;
               height: 24px;
-              background-image: asset-url('ufg2/expand-more-white.png');
+              background-image: asset-url('level4/expand-more-white.png');
               position: absolute;
               right: 0;
               top: 50%;
@@ -248,7 +297,7 @@ body .header {
     [name=search]#search {
       /*display: none;*/
       width: 0;
-      height: 60px;
+      height: 38px;
       /*border-radius: 0 2px 2px 0;*/
       box-sizing: border-box;
       padding: 0;
@@ -278,7 +327,7 @@ body .header {
       outline: 0;
       font-size: 0;
       cursor: pointer;
-      background-image: asset-url('ufg2/search-white.svg');
+      background-image: asset-url('level4/search-blue.svg');
       background-color: transparent;
       background-position: center;
       background-repeat: no-repeat;
@@ -287,7 +336,7 @@ body .header {
       transition: .2s;
 
       &.open {
-        background-image: asset-url('ufg2/search-gray.svg');
+        background-image: asset-url('level4/search-gray.svg');
       }
     }
   }
@@ -308,7 +357,7 @@ body .header {
   padding: 19px 0 22px;
 
   .icon {
-    background-image: asset-url('ufg2/ic-menu.svg');
+    background-image: asset-url('level4/ic-menu.svg');
     width: 18px;
     height: 12px;
     opacity: 0.54;
@@ -443,15 +492,15 @@ header .social-icon {
   }
 
   .increase-font {
-    background-image: asset-url('ufg2/ic-tipo.png');
+    background-image: asset-url('level4/ic-tipo.png');
   }
 
   .decrease-font {
-    background-image: asset-url('ufg2/ic-tipo_2.png');
+    background-image: asset-url('level4/ic-tipo_2.png');
   }
 
   .accessibility_color a {
-    background-image: asset-url('ufg2/ic-contraste.png');
+    background-image: asset-url('level4/ic-contraste.png');
   }
 }
 
@@ -465,7 +514,7 @@ header .social-icon {
     background-color: transparent;
 
     > li {
-      background: asset-url('ufg2/expand-more.png') no-repeat scroll;
+      background: asset-url('level4/expand-more.png') no-repeat scroll;
       background-position: 24px 0px;
 
       a:first-child {

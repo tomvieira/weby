@@ -248,10 +248,22 @@ summary em, summary em * {
 .front_news_title {
   width: 940px;
   max-width: 100%;
+  text-align: center;
 
   a, span {
     color: var(--red);
   }
+}
+
+.front_news_title:after{
+  content: '';
+  display: block;
+  margin: auto;
+  position: relative;
+  bottom: 0;
+  width: 50px;
+  height: 5px;
+  background: #0072b9;
 }
 
 .event_list_title {
@@ -262,13 +274,9 @@ summary em, summary em * {
 
 .link_to_all {
   display: block;
-  position: absolute;
-  width: 100%;
-  max-width: 940px;
-  top: 124px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: right;
+  position: relative;
+  width: 100%;  
+  text-align: center;
 
   a {
     margin-top: 10px;
@@ -617,7 +625,7 @@ summary em, summary em * {
   background-image: asset-url('ufg2/img-grid.png');
   background-position: left bottom;
   background-repeat: repeat-x;
-  position: relative;
+  position: relative;  
 
   .container {
     display: flex;
@@ -928,7 +936,7 @@ summary em, summary em * {
       margin: 0;
       padding: 0;
     }
-  }
+  }   
 
   .image_component {
     flex: 0 0 220px;
