@@ -277,6 +277,7 @@ summary em, summary em * {
   position: relative;
   width: 100%;  
   text-align: center;
+  margin: 0 auto;
 
   a {
     margin-top: 10px;
@@ -1173,4 +1174,58 @@ summary em, summary em * {
 .image_component h3 a{
   color: inherit;
   text-decoration: none;
+}
+
+.event-lists-bar-top{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_pink_top.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-top: 20px;
+}
+
+.event-lists-bar-bottom{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_pink_bottom.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-bottom: 20px;
+}
+
+.news-bar-top{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_green_top.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-top: 20px;
+}
+
+.news-bar-bottom{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_green_bottom.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-bottom: 20px;
+}
+
+.social-cards-bar-top{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_yellow_top.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-top: 20px;
+}
+
+.social-cards-bar-bottom{
+  width: 100%;
+  height: 50px;
+  background-image: asset-url('level4/bar_yellow_bottom.png');
+  background-repeat: no-repeat;
+  background-size:100% 100%;
+  margin-bottom: 20px;
 }
